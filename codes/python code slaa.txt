@@ -1,0 +1,26 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import quad
+
+# Define the function representing the integrand
+def integrand(x, k, Omega, p):
+    return np.exp(-k - ((k + 1) * x**2) / Omega) * np.log2(1 + p * x)
+
+# Define the range of x values for the plot
+x_values = np.linspace(0, 10, 1000)
+
+# Assuming specific values for k, Omega, and p
+k_value = 1.0
+Omega_value = 2.0
+p_value = 0.5
+
+# Calculate the y values based on the integrand function
+y_values = integrand(x_values, k_value, Omega_value, p_value)
+
+# Plot the function
+plt.plot(x_values, y_values, label=r'$e^{-k-\frac{(k+1)x^2}{\Omega}} \log_2(1 + px)$')
+plt.xlabel('x')
+plt.ylabel('Integrand Value')
+plt.title('Plot of the Integrand')
+plt.legend()
+plt.show()
